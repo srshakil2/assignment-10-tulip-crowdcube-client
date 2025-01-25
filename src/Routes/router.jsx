@@ -5,11 +5,11 @@ import Campaigns from "../Components/Campaigns";
 import Addcampaign from "../Components/Addcampaign";
 import PrivateRoute from "./PrivateRoute";
 
-// import UpdateCampaign from "../Components/UpdateCampaign";
+import UpdateCampaign from "../Components/UpdateCampaign";
 // import CampaignDetails from "../Components/CampaignDetails";
 // import MyDonations from "../Components/MyDonations";
 import Login from "../Components/Auth/Login";
-// import Register from "../Components/Auth/Register";
+import Register from "../Components/Auth/Register";
 
 // import MyCampaign from "../Components/MyCampaign";
 import ErrorPages from "../Components/ErrorPages";
@@ -39,8 +39,22 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/updateCampaign/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCampaign></UpdateCampaign>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://tulip-server.vercel.app/campaign/${params.id}`),
+      },
+      {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
       },
     ],
   },
