@@ -23,12 +23,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://crowdcube-rose.vercel.app/campaign"),
+        loader: () => fetch("http://localhost:5500/campaign"),
       },
       {
         path: "/campaigns",
         element: <Campaigns></Campaigns>,
-        loader: () => fetch("https://crowdcube-rose.vercel.app/campaign"),
+        loader: () => fetch("http://localhost:5500/campaign"),
       },
       {
         path: "/addCampaign",
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://crowdcube-rose.vercel.app/campaign/${params.id}`),
+          fetch(`http://localhost:5500/campaign/${params.id}`),
       },
       {
         path: "/myDonations",

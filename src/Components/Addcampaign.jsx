@@ -33,7 +33,7 @@ const Addcampaign = () => {
 
     // Send data to the server
     // console.log(newCampaign);
-    fetch("https://crowdcube-rose.vercel.app/campaign", {
+    fetch("http://localhost:5500/campaign", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

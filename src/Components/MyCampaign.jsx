@@ -2,19 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import UpdateModal from "./UpdateModal";
+import axios from "axios";
 
 const MyCampaign = () => {
+  const [docId, setDocId] = useState("");
+  const [modal, setModal] = useState(false);
   const { user } = useContext(AuthContext); // Get authenticated user
   const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
     // Fetch campaigns for the authenticated user
     if (user?.email) {
-      fetch(
-        `https://crowdcube-rose.vercel.app/campaign?userEmail=${user.email}`
-      )
-        .then((res) => res.json())
-        .then((data) => setCampaigns(data))
+      axios
+        .get(`http://localhost:5500/campaign/useradd/${user?.email}`)
+
+        .then((res) => setCampaigns(res?.data))
         .catch((error) => console.error("Error fetching campaigns:", error));
     }
   }, [user?.email]);
@@ -30,7 +33,7 @@ const MyCampaign = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://crowdcube-rose.vercel.app/campaign/${id}`, {
+        fetch(`http://localhost:5500/campaign/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -47,6 +50,13 @@ const MyCampaign = () => {
           });
       }
     });
+  };
+
+  // handelModal
+  const handelModal = (id) => {
+    setDocId(id);
+    setModal(true);
+    // console.log(id, "-------");
   };
 
   return (
@@ -84,14 +94,13 @@ const MyCampaign = () => {
                   </td>
                   {/* ei khane update er kaj korbo kal */}
                   <td className="p-3 border">
-                    <Link>
-                      <button
-                        className="btn bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 mr-2"
-                        onClick={() => console.log("Update functionality here")}
-                      >
-                        Update
-                      </button>
-                    </Link>
+                    <button
+                      className="btn bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 mr-2"
+                      onClick={() => handelModal(campaign._id)}
+                    >
+                      Update
+                    </button>
+
                     {/* delete btn */}
                     <button
                       className="btn bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
@@ -105,6 +114,17 @@ const MyCampaign = () => {
             )}
           </tbody>
         </table>
+      </div>
+      {/* modal */}
+      <div>
+        {modal && (
+          <UpdateModal
+            modal={modal}
+            setModal={setModal}
+            docId={docId}
+            setDocId={setDocId}
+          ></UpdateModal>
+        )}
       </div>
     </div>
   );
