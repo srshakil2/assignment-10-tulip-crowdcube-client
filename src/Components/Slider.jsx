@@ -35,21 +35,21 @@ const Slider = () => {
       <SwiperSlide>
         <img
           className="md:h-[700px] w-full object-cover rounded-3xl"
-          src="https://c0.wallpaperflare.com/preview/165/219/726/camera-card-communication-composition.jpg"
+          src="https://i.ibb.co.com/5WXPwyz/camylla-battani-ABVE1cy-T7hk-unsplash.jpg"
           alt=""
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           className="md:h-[700px] w-full object-cover rounded-3xl"
-          src="https://static.vecteezy.com/system/resources/previews/001/545/686/non_2x/crowdfunding-concept-in-flat-style-vector.jpg"
+          src="https://i.ibb.co.com/YR4FDbh/chuttersnap-g-DDas5-ALRw-unsplash.jpg"
           alt=""
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           className="md:h-[700px] w-full object-cover rounded-3xl"
-          src="https://st3.depositphotos.com/2605379/18385/i/450/depositphotos_183851554-stock-photo-idea-and-presentation-concept.jpg"
+          src="https://i.ibb.co.com/b1FZBfP/papaioannou-kostas-tysec-Um5-HJA-unsplash.jpg"
           alt=""
         />
       </SwiperSlide>

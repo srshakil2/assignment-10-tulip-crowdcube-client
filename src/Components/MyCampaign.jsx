@@ -15,7 +15,9 @@ const MyCampaign = () => {
     // Fetch campaigns for the authenticated user
     if (user?.email) {
       axios
-        .get(`http://localhost:5500/campaign/useradd/${user?.email}`)
+        .get(
+          `https://crowdcube-rose.vercel.app/campaign/useradd/${user?.email}`
+        )
 
         .then((res) => setCampaigns(res?.data))
         .catch((error) => console.error("Error fetching campaigns:", error));
@@ -33,7 +35,7 @@ const MyCampaign = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5500/campaign/${id}`, {
+        fetch(`https://crowdcube-rose.vercel.app/campaign/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

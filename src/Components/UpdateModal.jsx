@@ -8,7 +8,7 @@ const UpdateModal = ({ setModal, docId, setDocId }) => {
   //   console.log(singeleData, "--------");
   useEffect(() => {
     axios
-      .get(`http://localhost:5500/campaign/${docId}`)
+      .get(`https://crowdcube-rose.vercel.app/campaign/${docId}`)
       .then((res) => {
         setSingeleData(res.data);
       })
@@ -28,7 +28,7 @@ const UpdateModal = ({ setModal, docId, setDocId }) => {
     // console.log("Form Data:-----", data);
     const id = singeleData?._id;
     axios
-      .patch(`http://localhost:5500/campaign/updateone/${id}`, data)
+      .patch(`https://crowdcube-rose.vercel.app/campaign/updateone/${id}`, data)
       .then((res) => {
         if (res.data?.modifiedCount > 0) {
           Swal.fire({
