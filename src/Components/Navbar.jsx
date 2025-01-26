@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div
       className={`navbar ${
-        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+        isDarkMode ? "bg-gray-900 text-white" : " bg-sky-800 text-black"
       } shadow-md sticky px-8 top-0 z-50`}
     >
       <div className="navbar-start flex items-center">

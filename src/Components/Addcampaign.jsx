@@ -33,7 +33,7 @@ const Addcampaign = () => {
 
     // Send data to the server
     // console.log(newCampaign);
-    fetch("https://tulip-server.vercel.app/campaign", {
+    fetch("https://crowdcube-rose.vercel.app/campaign", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
